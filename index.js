@@ -39,7 +39,7 @@ const client = new MongoClient(process.env.MONGODB_URI);
 
 const run = async () => {
   try {
-    // await client.connect();
+    await client.connect();
     const db = client.db("sportsArena");
     const features = db.collection("featuredfacilities");
     const bookings = db.collection("bookings");
