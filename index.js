@@ -3,7 +3,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const { createRemoteJWKSet, jwtVerify } = require("jose");
+const { createRemoteJWKSet, jwtVerify } = require("jose-cjs");
 
 dotenv.config();
 const app = express();
@@ -133,5 +133,7 @@ const run = async () => {
   }
 };
 run();
-
+app.get("/", (req, res) => {
+  res.send("Sports Arena Server Running");
+});
 app.listen(port, () => console.log(`Server running on ${port}`));
