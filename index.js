@@ -7,7 +7,7 @@ const { createRemoteJWKSet, jwtVerify } = require("jose");
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT;
+const port = 8000;
 
 app.use(express.json());
 app.use(
@@ -90,7 +90,7 @@ const run = async () => {
     } catch (err) { res.status(500).json({ message: "Error" }); }
   });
 
-    // Get My Bookings
+    // Get My Bookings 
   app.get("/bookings", verifyToken, async (req, res) => {
     res.send(await bookings.find({ userEmail: req.user.email }).toArray());
   });
@@ -106,6 +106,9 @@ const run = async () => {
       );
       res.send(result);
     });
+
+
+    
 
     app.delete("/facilities/:id", verifyToken, async (req, res) => {
       res.send(
